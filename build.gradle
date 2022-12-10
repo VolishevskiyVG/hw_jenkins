@@ -6,6 +6,7 @@ plugins {
 repositories {
     mavenCentral()
 }
+
 allure {
     report {
         version.set("2.19.0")
@@ -25,7 +26,7 @@ tasks.withType(JavaCompile) {
 }
 
 dependencies {
-    testImplementation(
+    testImplementation (
             "com.github.javafaker:javafaker:1.0.2",
             "com.codeborne:selenide:6.9.0",
             "io.qameta.allure:allure-selenide:2.19.0",
@@ -33,6 +34,7 @@ dependencies {
             "org.slf4j:slf4j-simple:1.7.32"
     )
 }
+
 tasks.withType(Test) {
     useJUnitPlatform()
 
@@ -44,15 +46,20 @@ tasks.withType(Test) {
     }
 }
 
+task smoke_tests(type: Test) {
+    useJUnitPlatform {
+        includeTags("smoke")
+    }
+}
 
 help {
     doFirst {
         println ""
         println "************************************************************************ "
         println "***                                                                  *** "
-        println "*** Welcome to https://github.com/VolishevskiyVG/hw_automation-practice-form!   *** "
+        println "*** Welcome to https://github.com/qa-guru/demoqa-test-16!            *** "
         println "***                                                                  *** "
-        println "*** ./gradlew help                                                    *** "
+        println "*** ./gradlew help                                                   *** "
         println "***                                                                  *** "
         println "************************************************************************ "
         println ""
